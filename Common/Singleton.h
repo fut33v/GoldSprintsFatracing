@@ -21,7 +21,7 @@
 #define ATEXIT_CALLING_CONVENTION_QUALIFIER 
 #endif
 
-namespace VMM {
+namespace Fatracing {
 
 //! Обертка синглтона.
 //! Позволяет создавать синглтоны заданных классов. 
@@ -95,5 +95,5 @@ void ATEXIT_CALLING_CONVENTION_QUALIFIER SingletonHolder<T>::DestroySingleton()
     m_destroyed = true;
 }
 
-} // namespace VMM
+} // namespace Fatracing
 #endif // _SINGLETON_H

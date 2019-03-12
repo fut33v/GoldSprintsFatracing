@@ -11,7 +11,7 @@
 #include "Utils.h"
 
 
-namespace VMM {
+namespace Fatracing {
 
 template <typename T>
 class BaseSettingsList {

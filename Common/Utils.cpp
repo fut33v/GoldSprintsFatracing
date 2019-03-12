@@ -5,8 +5,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/system/error_code.hpp>
 
-namespace VMM
-{
+namespace Fatracing {
 namespace Utils
 {
 tm TimeToTimeT(const std::chrono::system_clock::time_point& time)
@@ -48,12 +47,12 @@ std::string Format(const std::chrono::system_clock::time_point& time)
 
 std::string FormatTimeShort(const std::chrono::system_clock::time_point& time)
 {
-	auto tp = time.time_since_epoch();
-	tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
-	tm t = TimeToTimeT(time);
-	return Format("[%02u:%02u:%02u.%03u] ",
-	              t.tm_hour, t.tm_min, t.tm_sec,
-	              static_cast<unsigned int>(tp / std::chrono::milliseconds(1)));
+    auto tp = time.time_since_epoch();
+    tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
+    tm t = TimeToTimeT(time);
+    return Format("[%02u:%02u:%02u.%03u] ",
+                  t.tm_hour, t.tm_min, t.tm_sec,
+                  static_cast<unsigned int>(tp / std::chrono::milliseconds(1)));
 }
 
 std::string FormatFileName(const std::chrono::system_clock::time_point& time)
@@ -69,48 +68,32 @@ std::string FormatFileName(const std::chrono::system_clock::time_point& time)
 
 std::string FormatFileNameYearDayMonth(std::chrono::system_clock::time_point time)
 {
-	auto tp = time.time_since_epoch();
-	tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
+    auto tp = time.time_since_epoch();
+    tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
 
     tm t = TimeToTimeT(time);
 
-	return Format("%04u_%02u_%02u", t.tm_year + 1900, t.tm_mday, t.tm_mon + 1);
+    return Format("%04u_%02u_%02u", t.tm_year + 1900, t.tm_mday, t.tm_mon + 1);
 }
 
 std::string FormatFileNameYearMonthDayHourSecond(std::chrono::system_clock::time_point time)
 {
-	auto tp = time.time_since_epoch();
-	tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
+    auto tp = time.time_since_epoch();
+    tp -= std::chrono::duration_cast<std::chrono::seconds>(tp);
 
     tm t = TimeToTimeT(time);
 
-	return Format("%04u_%02u_%02u__%02u_%02u_%02u", t.tm_year + 1900, t.tm_mday, t.tm_mon + 1, t.tm_hour, t.tm_min, t.tm_sec);
+    return Format("%04u_%02u_%02u__%02u_%02u_%02u", t.tm_year + 1900, t.tm_mday, t.tm_mon + 1, t.tm_hour, t.tm_min, t.tm_sec);
 }
 
-static std::unordered_map<std::string, ColorType> ColorTypes = {    
-    {"Monochrome", ColorType::Monochrome}    
-};
-
-ColorType ColorTypeFromStr(const std::string& str)
-{
-    auto itr = ColorTypes.find(str);
-    if (itr != ColorTypes.end())
-    {
-        return itr->second;
-    }
-    return ColorType::Monochrome;
-}
-
-std::string ToString(double n, int precision, std::string locale)
-{
+std::string ToString(double n, int precision, std::string locale) {
     std::stringstream stream;
 //    stream.imbue(std::locale(locale));
     stream << std::fixed << std::setprecision(precision) << n;
     return stream.str();
 }
 
-void Split(const std::string& aSource, std::vector<std::string>& aDest, const char aDelimiter, bool aTrim)
-{    
+void Split(const std::string& aSource, std::vector<std::string>& aDest, const char aDelimiter, bool aTrim) {
     if (!aSource.empty())
     {
         std::stringstream strStream(aSource);
@@ -338,4 +321,4 @@ bool SaveContentsToFile(const char *filename, std::string contents) {
 
 
 } // namespace Utils
-} // namespace VMM
+} // namespace Fatracing

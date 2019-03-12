@@ -4,7 +4,7 @@
 
 #include <boost/filesystem/path.hpp>
 
-namespace VMM
+namespace Fatracing
 {
     class FolderManager
     {

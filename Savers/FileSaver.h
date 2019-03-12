@@ -8,7 +8,7 @@
 #include <memory>
 #include <functional>
 
-namespace VMM
+namespace Fatracing
 {
 
     class FileSaver

@@ -8,7 +8,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace VMM
+namespace Fatracing
 {
 	// TODO(victor) FAQ для тупых, как правильно пользоваться
     template<typename T>

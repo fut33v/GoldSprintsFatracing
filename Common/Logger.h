@@ -1,7 +1,5 @@
-﻿// Copyright 2018
-
-#ifndef SUBPRJ_COMMON_BASE_LOGGER_H_
-#define SUBPRJ_COMMON_BASE_LOGGER_H_
+﻿#ifndef LOGGER_H_
+#define LOGGER_H_
 
 #include <stdio.h>
 #include <fstream>
@@ -10,12 +8,11 @@
 #include <chrono>
 #include <ctime>
 #include <mutex>
-#include "Convert.h"
 #include "Utils.h"
 #include <atomic>
 #include <iostream>
 
-namespace VMM
+namespace Fatracing
 {
 //! Приоритет записи лога
 enum class PriorityEnum : int
@@ -245,6 +242,6 @@ void Logger::Log(PriorityEnum aPriority, std::string aFile, std::string aFunctio
 
 #endif
 
-} // namespace VMM
+} // namespace Fatracing
 
-#endif // SUBPRJ_COMMON_BASE_LOGGER_H_
+#endif // LOGGER_H_

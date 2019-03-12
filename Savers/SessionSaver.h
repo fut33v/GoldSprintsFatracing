@@ -12,7 +12,7 @@
 #include <map>
 #include <string>
 
-namespace VMM
+namespace Fatracing
 {
 	typedef std::function<void(std::string /*drive*/, uint64_t /* last free size*/)> WrittenFrameCallback;
 

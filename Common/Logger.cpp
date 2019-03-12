@@ -2,7 +2,7 @@
 
 #include "Logger.h"
 
-namespace VMM {
+namespace Fatracing {
 Logger::Logger() {
 	if (mWriteToFileEnabled) {
 		OpenFile();
@@ -93,4 +93,4 @@ bool Logger::OpenFile() {
 	mFileStream.open(LogFilePath, std::ofstream::out);
 	return true;
 }
-} // namespace VMM
+} // namespace Fatracing

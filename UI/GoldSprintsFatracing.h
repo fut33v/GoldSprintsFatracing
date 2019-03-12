@@ -1,11 +1,14 @@
 // Copyright 2018
 
-#ifndef SUBPRJ_VISMUTINPROTOTYPEMODULE_SRC_MAIN_H_
-#define SUBPRJ_VISMUTINPROTOTYPEMODULE_SRC_MAIN_H_
+#ifndef GOLDSPRINTSFATRACING_H
+#define GOLDSPRINTSFATRACING_H
 
 #include <QMainWindow>
 #include <QGraphicsScene>
-//#include "ui_vismutinprototypemodule.h"
+
+#include "Logger.h"
+
+#include "ui_goldsprintsfatracing.h"
 
 
 class GoldSprintsFatracing : public QMainWindow {
@@ -15,15 +18,15 @@ public:
     explicit GoldSprintsFatracing(QWidget* parent = nullptr);
     ~GoldSprintsFatracing();
 
-//private slots:
-
+private slots:
+    void OnPushButtonRace();
 //signals:
-    
-protected:
-    void paintEvent(QPaintEvent *) override;
 
 private:
-//    Ui::VismutinPrototypeModuleClass ui;
+    Fatracing::Logger& mLogger;
+    Ui_GoldSprintsFatracing ui;
+//    Ui::VismutinPrototypeModuleClass;
+
 };
 
-#endif // SUBPRJ_VISMUTINPROTOTYPEMODULE_SRC_MAIN_H_
+#endif // GOLDSPRINTSFATRACING_H

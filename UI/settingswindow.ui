@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GoldSprintsFatracing</class>
- <widget class="QMainWindow" name="GoldSprintsFatracing">
+ <class>SettingsWindow</class>
+ <widget class="QMainWindow" name="SettingsWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -20,39 +20,7 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_8">
-    <item>
-     <widget class="QTableWidget" name="tableWidget"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonRace">
-      <property name="text">
-       <string>RACE</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1005</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Файл</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="actionOpen"/>
-    <addaction name="actionSettings"/>
-    <addaction name="separator"/>
-    <addaction name="actionQuit"/>
-   </widget>
-   <addaction name="menu"/>
+   <layout class="QVBoxLayout" name="verticalLayout_8"/>
   </widget>
   <action name="actionQuit">
    <property name="text">

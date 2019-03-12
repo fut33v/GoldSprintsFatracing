@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
-<MainSettings>
-	<WorkMode WorkAutoMode="1" SaveImages="false" DebugGui="false" FramelessWindowHint="false" DisplayNumber="0" />
+<GoldSprintsSettings>
+    <RaceTimeSeconds>69</RaceTimeSeconds>
+	<PortName>/dev/ttyACM0</PortName>
 </MainSettings>

@@ -1,75 +1,7 @@
-#include "BlackBox.h"
+#include "./BlackBox.h"
+
 
 namespace Fatracing {
-
-bool BlackBox::Message::Parse(const Communication::Buffer& aBytes) {
-	if (aBytes.size() < MESSAGE_SIZE) {
-		return false;
-	}
-
-	int i = 0;
-	if (aBytes[i] != 0xAC || aBytes[i+1] != 0xF8) {
-		return false;
-	}
-	i+=2;
-
-	Version = aBytes[i];
-	i++;
-
-	Year = aBytes[i];
-	i++;
-
-	Month = aBytes[i];
-	i++;
-
-	Day = aBytes[i];
-	i++;
-
-	Hour = aBytes[i];
-	i++;
-
-	Minute = aBytes[i];
-	i++;
-
-	Second = aBytes[i];
-	i++;
-
-	Shift = aBytes[i];
-	i++;
-
-	LatitudeNorthSouth = aBytes[i];
-	i++;
-
-	LatitudeDegrees = aBytes[i];
-	i++;
-
-	LatitudeMinutes = aBytes[i];
-	i++;
-
-	LatitudeSeconds = aBytes[i];
-	i++;
-
-	LatitudeSecondsParts = aBytes[i];
-	i++;
-
-	LongitudeEastWest = aBytes[i];
-	i++;
-
-	LongitudeDegrees = aBytes[i];
-	i++;
-
-	LongitudeMinutes = aBytes[i];
-	i++;
-
-	LongitudeSeconds = aBytes[i];
-	i++;
-
-	LongitudeSecondsParts = aBytes[i];
-	i++;
-
-	return true;
-}
-
 
 BlackBox::BlackBox(): mDummyWork(mIoService), mSerialPort(mIoService), mStopReadThread(false) {
 	mBuffer.resize(512);
@@ -136,14 +68,14 @@ bool BlackBox::Init(const SerialPortSettings& aSerialPortSettings, bool aReInit)
 	return true;
 }
 
-void BlackBox::AddOnReadCallback(OnReadCallback aCallback) {
-	std::unique_lock<std::mutex> lock(mCallbackMutex);
-	mOnReadCallbacks.push_back(aCallback);
-}
+//void BlackBox::AddOnReadCallback(OnReadCallback aCallback) {
+//	std::unique_lock<std::mutex> lock(mCallbackMutex);
+//	mOnReadCallbacks.push_back(aCallback);
+//}
 
 void BlackBox::ClearCallbacks() {
-	std::unique_lock<std::mutex> lock(mCallbackMutex);
-	mOnReadCallbacks.clear();
+//	std::unique_lock<std::mutex> lock(mCallbackMutex);
+//	mOnReadCallbacks.clear();
 }
 
 void BlackBox::ReInit(bool aWaitForReadThread) {
@@ -177,22 +109,22 @@ void BlackBox::ReadThreadFunc() {
 		std::unique_lock<std::mutex> lock(mLastReadTimeMutex);
 		mLastReadTime = std::chrono::system_clock::now();
 
-		Communication::Buffer data(mBuffer.begin(), mBuffer.begin() + bytesReceived);
-		std::vector<Communication::Buffer> packets = SplitPackets(data);
-		std::vector<Communication::Buffer> unstuffedPackets;
-		for (auto p : packets) {
-			Communication::Buffer unstuffed(p.size());
-			UnStuffData(p.data(), p.size(), unstuffed.data());
-			unstuffedPackets.push_back(unstuffed);
-		}
+//        Buffer data(mBuffer.begin(), mBuffer.begin() + bytesReceived);
+//        std::vector<Buffer> packets = SplitPackets(data);
+//        std::vector<Buffer> unstuffedPackets;
+//		for (auto p : packets) {
+//            Buffer unstuffed(p.size());
+//			UnStuffData(p.data(), p.size(), unstuffed.data());
+//			unstuffedPackets.push_back(unstuffed);
+//		}
 
-		for (auto& p : unstuffedPackets) {
-			Message message;
-			message.Parse(p);
-			for (auto& x : mOnReadCallbacks) {
-				x(message);
-			}
-		}
+//		for (auto& p : unstuffedPackets) {
+//			Message message;
+//			message.Parse(p);
+//			for (auto& x : mOnReadCallbacks) {
+//				x(message);
+//			}
+//		}
 	}
 }
 
@@ -209,7 +141,7 @@ void BlackBox::ReOpenPortFunc() {
 	}
 }
 
-bool BlackBox::Write(Communication::Buffer aBuffer) {
+bool BlackBox::Write(Buffer aBuffer) {
 	if (!mSerialPort.is_open()) {
 		LOGGER_LOG(PriorityEnum::Error, "Последовательный порт не открыт");
 		return false;
@@ -231,26 +163,5 @@ bool BlackBox::Write(Communication::Buffer aBuffer) {
 	return true;
 }
 
-
-std::vector<Communication::Buffer> BlackBox::SplitPackets(Communication::Buffer data) {
-	std::vector<Communication::Buffer> packets;
-	if (data.size() < MININUM_PACKET_SIZE) {
-		return packets;
-	}
-
-	for (size_t i = 0; i < data.size(); ++i) {
-		if (data[i] == MARKER_FIRST_BYTE && data[i+1]==MARKER_SECOND_BYTE) {
-//			for (size_t x = i + 1; x < data.size() - 1; ++x) {
-//				if (data[x] != DLE && data[x + 1] == ETX) {
-//					Communication::Buffer payload = Communication::Buffer(data.begin() + i + 1, data.begin() + x + 1);
-//					packets.push_back(payload);
-//					break;
-//				}
-//			}
-		}
-	}
-
-	return packets;
-}
 
 }

@@ -1,7 +1,7 @@
 ﻿// Copyright 2018
 
-#ifndef SUBPRJ_COMMON_BASE_UTILS_H_
-#define SUBPRJ_COMMON_BASE_UTILS_H_
+#ifndef UTILS_H_
+#define UTILS_H_
 
 #include <memory>
 #include <chrono>
@@ -14,14 +14,11 @@
 #include <boost/filesystem/path.hpp>
 #include <sstream>
 #include <list>
-
-#include "CameraAPI/ICameraAPI.h"
 #include <chrono>
 
-namespace VMM
-{
-namespace Utils
-{
+namespace Fatracing {
+namespace Utils {
+
 template <typename... Args>
 std::string Format(const char* format, Args&&... vs)
 {
@@ -39,16 +36,10 @@ tm GetNowTm();
 std::chrono::system_clock::time_point TmToTimePoint(tm& aTm);
 
 std::string Format(const std::chrono::system_clock::time_point& time);
-
 std::string FormatTimeShort(const std::chrono::system_clock::time_point& time);
-
 std::string FormatFileName(const std::chrono::system_clock::time_point& time);
 std::string FormatFileNameYearDayMonth(std::chrono::system_clock::time_point time);
 std::string FormatFileNameYearMonthDayHourSecond(std::chrono::system_clock::time_point time);
-
-ColorType ColorTypeFromStr(const std::string& str);
-
-
 
 
 //! Сгенерировать id для мапы
@@ -199,6 +190,6 @@ std::string GetFileContents(const char *filename);
 bool SaveContentsToFile(const char *filename, std::string contents);
 
 } // namespace Utils
-} // namespace VMM
+} // namespace Fatracing
 
-#endif // SUBPRJ_COMMON_BASE_UTILS_H_
+#endif // UTILS_H_

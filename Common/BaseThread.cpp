@@ -1,6 +1,6 @@
 ﻿#include "BaseThread.h"
 
-namespace VMM
+namespace Fatracing
 {
     BaseThread::BaseThread()
     {

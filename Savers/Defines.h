@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace VMM
+namespace Fatracing
 {
 	const std::string FileExtension = ".vmt";
 	const std::string FolderName = "Session";

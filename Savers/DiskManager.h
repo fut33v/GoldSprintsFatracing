@@ -12,7 +12,7 @@
 #include "CommonStructures.h"
 #include "Logger.h"
 
-namespace VMM
+namespace Fatracing
 {
 	typedef std::function<void(uint64_t /* last free size*/)> FrameWroteCallback;
 

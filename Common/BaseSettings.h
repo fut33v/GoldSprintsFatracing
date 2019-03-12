@@ -14,7 +14,7 @@
 #include <QFile>
 
 
-namespace VMM {
+namespace Fatracing {
 
 //! Базовый класс настроек
 template <class T>
@@ -172,6 +172,6 @@ BaseSettings<T>::GetSettings() {
 //	return writer.result;
 //}
 
-} // namespace VMM
+} // namespace Fatracing
 
 #endif // SUBPRJ_COMMON_BASE_BASESETTINGS_H_

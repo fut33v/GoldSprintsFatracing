@@ -7,7 +7,7 @@
 #include <mutex>
 #include <atomic>
 
-namespace VMM
+namespace Fatracing
 {
     class BaseThread
     {

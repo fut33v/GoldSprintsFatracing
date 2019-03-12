@@ -26,10 +26,18 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 find_package(Boost 1.61.0 REQUIRED system filesystem thread regex date_time serialization locale)
 
+set(core_dir Core/)
 set(common_dir Common/)
 set(xml_dir XML/)
 set(black_box_dir BlackBox/)
 set(ui_dir UI/)
+
+set(core_sources
+        ${core_dir}Settings.h
+        ${core_dir}Settings.cpp
+        ${core_dir}Race.h
+        ${core_dir}Race.cpp
+)
 
 set(black_box_sources
         ${black_box_dir}BlackBox.h
@@ -39,6 +47,14 @@ set(ui_sources
         ${ui_dir}GoldSprintsFatracing.cpp
         ${ui_dir}GoldSprintsFatracing.h
         ${ui_dir}goldsprintsfatracing.ui
+
+        ${ui_dir}RaceWindow.cpp
+        ${ui_dir}RaceWindow.h
+        ${ui_dir}racewindow.ui
+
+        ${ui_dir}SettingsWindow.cpp
+        ${ui_dir}SettingsWindow.h
+        ${ui_dir}settingswindow.ui
 )
 set(common_sources
 	${common_dir}AsyncQueue.h
@@ -46,15 +62,9 @@ set(common_sources
 	${common_dir}BaseSettingsList.h
 	${common_dir}BaseThread.cpp
 	${common_dir}BaseThread.h
-	${common_dir}CommonStructures.h
-	${common_dir}CommunicationCommon.cpp
-	${common_dir}CommunicationCommon.h
-	${common_dir}Convert.h
 	${common_dir}Logger.cpp
 	${common_dir}Logger.h
-	${common_dir}SignalCallback.h
 	${common_dir}Singleton.h
-	${common_dir}TickThread.h
 	${common_dir}Utils.cpp
 	${common_dir}Utils.h
 )
@@ -65,8 +75,8 @@ set(xml_sources
 
 
 set(sources
-	main.cpp
-#	${core_sources}
+        main.cpp
+        ${core_sources}
         ${common_sources}
         ${black_box_sources}
 	${ui_sources}
