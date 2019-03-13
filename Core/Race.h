@@ -17,11 +17,19 @@ namespace Fatracing {
 struct RaceStruct {
     unsigned int Seconds;
 
-    uint64_t BlueScore;
-    uint64_t RedScore;
+    uint64_t BlueScore = 0;
+    uint64_t RedScore = 0;
 
-    uint64_t BlueRPM;
-    uint64_t RedRPM;
+    uint64_t BlueRPM = 0;
+    uint64_t RedRPM = 0;
+
+    bool Finish=false;
+
+    RacersEnum Leader;
+    uint64_t Diff;
+
+    uint64_t PrevBlueScore = 0;
+    uint64_t PrevRedScore = 0;
 };
 
 class Race {
@@ -36,11 +44,15 @@ private:
     std::mutex mRaceStateMutex;
     RaceStruct mCurrentRaceState;
 
+    std::thread mThread;
+    std::atomic<bool> mStopThread{false};
+
 public:
     Race(SettingsStruct& aSettings, RaceCallback aRaceCallback);
+    ~Race();
 
     void Start();
-    void Stop();
+    void Clear();
 
 private:
     void TimerTick();

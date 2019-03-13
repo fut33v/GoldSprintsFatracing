@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <GoldSprintsSettings>
-        <RaceTimeSeconds>69</RaceTimeSeconds>
+        <RaceTimeSeconds>5</RaceTimeSeconds>
         <PortName>/dev/ttyACM0</PortName>
 </MainSettings>

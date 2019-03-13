@@ -45,17 +45,9 @@ set(black_box_sources
         ${black_box_dir}BlackBox.cpp
 )
 set(ui_sources
-        ${ui_dir}GoldSprintsFatracing.cpp
-        ${ui_dir}GoldSprintsFatracing.h
-        ${ui_dir}goldsprintsfatracing.ui
-
         ${ui_dir}RaceWindow.cpp
         ${ui_dir}RaceWindow.h
         ${ui_dir}racewindow.ui
-
-        ${ui_dir}SettingsWindow.cpp
-        ${ui_dir}SettingsWindow.h
-        ${ui_dir}settingswindow.ui
 )
 set(common_sources
 	${common_dir}AsyncQueue.h
