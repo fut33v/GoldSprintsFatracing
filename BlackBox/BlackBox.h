@@ -7,6 +7,8 @@
 
 #include <boost/asio/serial_port.hpp>
 
+#include "../Core/Defines.h"
+
 #include "Logger.h"
 
 
@@ -81,13 +83,8 @@ inline bool SetSerialPortSettings(boost::asio::serial_port& aSerialPort, const S
 
 
 class BlackBox {
-
     typedef std::vector<uint8_t> Buffer;
-public:
-    //	typedef std::function<void(const Message&)> OnReadCallback;
-    //	typedef std::function<void()> OnWriteCallback;
 
-private:
     boost::asio::io_service mIoService;
     boost::asio::io_service::work mDummyWork;
     boost::asio::serial_port mSerialPort;
@@ -97,8 +94,8 @@ private:
     std::thread mReadThread;
     Buffer mBuffer;
 
-//    std::vector<OnReadCallback> mOnReadCallbacks;
     std::mutex mCallbackMutex;
+    std::function<void(RacersEnum)> mCallback;
 
     std::chrono::system_clock::time_point mLastReadTime;
     std::mutex mLastReadTimeMutex;
@@ -110,15 +107,13 @@ public:
     BlackBox();
     ~BlackBox();
 
-    bool Init(const SerialPortSettings& aSerialPortSettings, bool aReInit=false);
-//    void AddOnReadCallback(OnReadCallback aCallback);
-    void ClearCallbacks();
+    bool Init(const SerialPortSettings& aSerialPortSettings);
+    void SetCallback(std::function<void(RacersEnum)> aCallback);
+    void ClearCallback();
 
 private:
-    void ReInit(bool aWaitForReadThread);
     void ReadThreadFunc();
     void ReOpenPortFunc();
-    bool Write(Buffer aBuffer);
 
     static std::vector<Buffer> SplitPackets(Buffer data);
 };

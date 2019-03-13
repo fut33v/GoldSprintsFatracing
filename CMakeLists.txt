@@ -37,6 +37,7 @@ set(core_sources
         ${core_dir}Settings.cpp
         ${core_dir}Race.h
         ${core_dir}Race.cpp
+        ${core_dir}Defines.h
 )
 
 set(black_box_sources
@@ -93,5 +94,5 @@ include_directories(${Boost_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} -licuuc -ldl)
 
 include_directories(${common_dir})
-#configure_file( XML/GoldSprintsSettings.xml ${CMAKE_CURRENT_BINARY_DIR}/GoldSprintsSettings.xml)
+configure_file(XML/GoldSprintsSettings.xml ${CMAKE_CURRENT_BINARY_DIR}/GoldSprintsSettings.xml)
 

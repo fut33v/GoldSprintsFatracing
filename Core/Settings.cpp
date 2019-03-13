@@ -10,7 +10,7 @@ Settings::~Settings() {
 }
 
 SettingsStruct Settings::Parse(QXmlStreamReader& xml) {
-    SettingsStruct params = {0};
+    SettingsStruct params;
 
     while (!xml.atEnd()) {
         QStringRef name = xml.name();

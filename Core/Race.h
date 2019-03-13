@@ -3,11 +3,13 @@
 
 #include <memory>
 #include <functional>
+#include <mutex>
 
 #include "Logger.h"
 
 #include "../BlackBox/BlackBox.h"
-#include "Settings.h"
+#include "./Settings.h"
+#include "./Defines.h"
 
 
 namespace Fatracing {
@@ -28,48 +30,21 @@ public:
 
 private:
     std::shared_ptr<BlackBox> mBlackBox = nullptr;
-    SettingsStruct& mSettings;
+    SettingsStruct mSettings;
     RaceCallback mRaceCallback;
 
+    std::mutex mRaceStateMutex;
+    RaceStruct mCurrentRaceState;
+
 public:
-    Race(SettingsStruct& aSettings, RaceCallback aRaceCallback) {
-        mSettings = aSettings;
-//        if (aRaceCallback == nullptr) {
-//            throw std::exception();
-//        }
-        mRaceCallback = aRaceCallback;
-    }
+    Race(SettingsStruct& aSettings, RaceCallback aRaceCallback);
 
-    void Start() {
-        if (mBlackBox) {
-           mBlackBox.reset();
-        }
-        mBlackBox = std::make_shared<BlackBox>();
-        SerialPortSettings ss;
-        ss.PortName = mSettings.PortName;
-        ss.PortOnly = true;
-        mBlackBox->Init(ss);
-
-        // start timer here
-
-    }
-
-
-    void Stop() {
-
-    }
+    void Start();
+    void Stop();
 
 private:
-    void TimerTick() {
-        // get current race time
-        // get race counters and put it to race struct
-
-        RaceStruct r;
-
-        if (mRaceCallback) {
-            mRaceCallback(r);
-        }
-    }
+    void TimerTick();
+    void BlackBoxCallback(RacersEnum aRacer);
 };
 
 }
