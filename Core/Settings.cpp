@@ -16,7 +16,7 @@ SettingsStruct Settings::Parse(QXmlStreamReader& xml) {
         QStringRef name = xml.name();
         QString value = xml.readElementText();
         if (name == QString::fromStdString("RaceTimeSeconds")) {
-            params.RaceTimeSeconds = value.toUInt();
+            params.RaceTimeSeconds = value.toInt();
         }
         else if (name == QString::fromStdString("PortName")) {
             params.PortName = value.toStdString();

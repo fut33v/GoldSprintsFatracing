@@ -18,7 +18,7 @@ Race::~Race() {
     }
 }
 
-void Race::Start() {
+void Race::Init() {
     if (mBlackBox) {
         mBlackBox.reset();
     }
@@ -28,15 +28,23 @@ void Race::Start() {
     ss.PortOnly = true;
     mBlackBox->Init(ss);
     mBlackBox->SetCallback(std::bind(&Race::BlackBoxCallback, this, std::placeholders::_1));
+}
 
+void Race::Start() {
+    Clear();
+    if (mThread.joinable()) {
+        mThread.join();
+    }
     mThread = std::thread([&](){
-        unsigned int i = mSettings.RaceTimeSeconds;
-        for (; i >= 0; --i) {
+        int i = mSettings.RaceTimeSeconds;
+        while (i >= 0) {
+        //for (; i >= 0; --i) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             if (mStopThread) {
                 break;
             }
             TimerTick();
+            i--;
         }
     });
 }
@@ -48,6 +56,7 @@ void Race::Clear() {
     mCurrentRaceState.RedScore = 0;
     mCurrentRaceState.BlueRPM = 0;
     mCurrentRaceState.RedRPM = 0;
+    mCurrentRaceState.Finish = false;
 
     if (mRaceCallback) {
         mRaceCallback(mCurrentRaceState);
@@ -79,15 +88,18 @@ void Race::TimerTick() {
 
 void Race::BlackBoxCallback(RacersEnum aRacer) {
     std::unique_lock<std::mutex> lock(mRaceStateMutex);
-    switch (aRacer) {
-    case RacersEnum::BLUE: {
-        mCurrentRaceState.BlueScore += 1;
-        break;
-    }
-    case RacersEnum::RED: {
-        mCurrentRaceState.RedScore += 1;
-        break;
-    }
+
+    if (!mCurrentRaceState.Finish) {
+        switch (aRacer) {
+            case RacersEnum::BLUE: {
+                mCurrentRaceState.BlueScore += 1;
+                break;
+            }
+            case RacersEnum::RED: {
+                mCurrentRaceState.RedScore += 1;
+                break;
+            }
+        }
     }
 
     if (mCurrentRaceState.BlueScore > mCurrentRaceState.RedScore) {

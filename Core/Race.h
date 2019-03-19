@@ -15,7 +15,7 @@
 namespace Fatracing {
 
 struct RaceStruct {
-    unsigned int Seconds;
+    int Seconds;
 
     uint64_t BlueScore = 0;
     uint64_t RedScore = 0;
@@ -51,6 +51,7 @@ public:
     Race(SettingsStruct& aSettings, RaceCallback aRaceCallback);
     ~Race();
 
+    void Init();
     void Start();
     void Clear();
 

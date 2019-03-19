@@ -6,11 +6,11 @@ RaceWindow::RaceWindow(QWidget* parent) : QMainWindow(parent), mLogger(Fatracing
     ui.setupUi(this);
 
     connect(ui.pushButtonStart, &QPushButton::clicked, this, &RaceWindow::OnPushButtonStart);
-    connect(ui.pushButtonClear, &QPushButton::clicked, this, &RaceWindow::OnPushButtonClear);
     connect(this, &RaceWindow::RaceSignal, this, &RaceWindow::RaceSlot, Qt::QueuedConnection);
 
     auto s = Fatracing::SettingsSingleton::Instance().GetSettings();
     mRace = std::make_shared<Fatracing::Race>(s, std::bind(&RaceWindow::RaceCallback, this, std::placeholders::_1));
+    mRace->Init();
 
 	qRegisterMetaType<Fatracing::RaceStruct>();
 }
@@ -25,7 +25,6 @@ void RaceWindow::RaceCallback(Fatracing::RaceStruct aRaceStruct) {
 
 void RaceWindow::OnPushButtonStart() {
     ui.pushButtonStart->setEnabled(false);
-    ui.pushButtonClear->setEnabled(false);
     ui.lineEditBlue->setEnabled(false);
     ui.lineEditRed->setEnabled(false);
 
@@ -46,7 +45,6 @@ void RaceWindow::RaceSlot(Fatracing::RaceStruct aRaceStruct) {
         ui.lineEditBlue->setText(QString::number(aRaceStruct.BlueScore));
         ui.lineEditRed->setText(QString::number(aRaceStruct.RedScore));
         ui.pushButtonStart->setEnabled(true);
-        ui.pushButtonClear->setEnabled(true);
         ui.lineEditBlue->setEnabled(true);
         ui.lineEditRed->setEnabled(true);
     }
@@ -54,11 +52,12 @@ void RaceWindow::RaceSlot(Fatracing::RaceStruct aRaceStruct) {
     if (aRaceStruct.BlueScore != 0 && aRaceStruct.RedScore != 0) {
         switch (aRaceStruct.Leader) {
         case Fatracing::RacersEnum::BLUE: {
-            ui.labelLeader->setText("BLUE");
+            ui.labelLeader->setText("<span style=\"font-size:30pt; color:blue;\">BLUE</span>");
             break;
         }
         case Fatracing::RacersEnum::RED: {
-            ui.labelLeader->setText("RED");
+            //ui.labelLeader->setText("RED");
+            ui.labelLeader->setText("<span style=\"font-size:30pt; color:red;\">RED</span>");
             break;
         }
         }

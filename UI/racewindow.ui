@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
+    <width>734</width>
     <height>512</height>
    </rect>
   </property>
@@ -27,6 +27,12 @@
     </sizepolicy>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_8">
+    <property name="leftMargin">
+     <number>45</number>
+    </property>
+    <property name="rightMargin">
+     <number>45</number>
+    </property>
     <item>
      <widget class="QFrame" name="frame_5">
       <property name="sizePolicy">
@@ -52,8 +58,10 @@
          </property>
          <property name="font">
           <font>
-           <family>IBM 3270</family>
-           <pointsize>48</pointsize>
+           <family>Liberation Mono</family>
+           <pointsize>66</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -80,8 +88,10 @@
         <widget class="QLabel" name="label_9">
          <property name="font">
           <font>
-           <family>IBM 3270</family>
-           <pointsize>20</pointsize>
+           <family>Liberation Mono</family>
+           <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -93,12 +103,17 @@
         <widget class="QLabel" name="labelLeader">
          <property name="font">
           <font>
-           <family>IBM 3270</family>
-           <pointsize>20</pointsize>
+           <family>Liberation Mono</family>
+           <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
          </property>
         </widget>
        </item>
@@ -106,8 +121,10 @@
         <widget class="QLabel" name="label">
          <property name="font">
           <font>
-           <family>IBM 3270</family>
-           <pointsize>20</pointsize>
+           <family>Liberation Mono</family>
+           <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -119,7 +136,10 @@
         <widget class="QLabel" name="labelDiff">
          <property name="font">
           <font>
-           <pointsize>20</pointsize>
+           <family>Liberation Mono</family>
+           <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -156,9 +176,14 @@
            <widget class="QLabel" name="label_7">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>RPM</string>
@@ -169,17 +194,23 @@
            <widget class="QLabel" name="label_8">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Score:</string>
+             <string>SCORE:</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -187,9 +218,14 @@
            <widget class="QLabel" name="labelRedScore">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>0</string>
@@ -200,12 +236,20 @@
            <widget class="QLabel" name="label_10">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Speed:</string>
+             <string>SPEED:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -213,9 +257,14 @@
            <widget class="QLabel" name="labelRedRPM">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>0</string>
@@ -226,17 +275,37 @@
            <widget class="QLabel" name="label_5">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Copy this:</string>
+             <string>COPY:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
           <item row="2" column="1" colspan="2">
-           <widget class="QLineEdit" name="lineEditRed"/>
+           <widget class="QLineEdit" name="lineEditRed">
+            <property name="font">
+             <font>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -260,17 +329,23 @@
            <widget class="QLabel" name="label_2">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Score:</string>
+             <string>SCORE:</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -278,9 +353,14 @@
            <widget class="QLabel" name="label_6">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>RPM</string>
@@ -291,12 +371,20 @@
            <widget class="QLabel" name="label_4">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Speed:</string>
+             <string>SPEED:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -304,9 +392,14 @@
            <widget class="QLabel" name="labelBlueScore">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>0</string>
@@ -323,9 +416,14 @@
             </property>
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
             </property>
             <property name="text">
              <string>0</string>
@@ -336,17 +434,37 @@
            <widget class="QLabel" name="label_3">
             <property name="font">
              <font>
-              <family>IBM 3270</family>
-              <pointsize>16</pointsize>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
             <property name="text">
-             <string>Copy this:</string>
+             <string>COPY:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
           <item row="2" column="3" colspan="2">
-           <widget class="QLineEdit" name="lineEditBlue"/>
+           <widget class="QLineEdit" name="lineEditBlue">
+            <property name="font">
+             <font>
+              <family>Liberation Mono</family>
+              <pointsize>28</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -371,6 +489,14 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QPushButton" name="pushButtonStart">
+         <property name="font">
+          <font>
+           <family>Liberation Mono</family>
+           <pointsize>44</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>START</string>
          </property>

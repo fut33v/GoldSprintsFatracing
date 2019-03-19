@@ -12,7 +12,7 @@ namespace Fatracing {
 
 struct SettingsStruct {
     std::string PortName;
-    unsigned int RaceTimeSeconds;
+    int RaceTimeSeconds;
 };
 
 class Settings : public BaseSettings<SettingsStruct> {
